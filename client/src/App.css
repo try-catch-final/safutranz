@@ -1,0 +1,190 @@
+@import url(./components/assets/css/layout.css);
+@import url(./components/assets/css/main_chunk.css);
+@import url(./components/assets/css/token.css);
+@import url(./components/assets/css/dashboard.css);
+@import url(./components/assets/css/launch.css);
+@import url(./components/assets/css/pay.css);
+@import url(./components/assets/css/card.css);
+@import url(./components/assets/css/auth.css);
+
+.App {
+	text-align: center;
+	background-image: url('./components/assets/img/back/bg-1.png');
+	width: 100%;
+	height: auto;
+	min-height: 100vh;
+	font-family: 'Rajdhani';
+}
+
+.dark-overly {
+	background: #000000B3 0% 0% no-repeat padding-box;
+	height: 100%;
+	min-height: 100vh;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+p {
+	font-family: 'Rajdhani';
+}
+
+.main {
+	padding-top: 90px;
+	color: rgb(255, 255, 255);
+}
+
+.footer {
+	background-color: #282c3400 !important;
+}
+
+@font-face {
+	font-family: "Rajdhani";
+	src: url("components/assets/font/Rajdhani-Medium.ttf");
+}
+
+[data-rk] button[data-testid="rk-connect-button"] {
+	width: 160px !important;
+	height: 40px !important;
+	margin-top: 20px;
+	background-color: transparent !important;
+	box-shadow: 0px 2px 2px #d48e02 !important;
+	border: 1px solid #D48E0287 !important;
+	border-radius: 12px !important;
+	align-items: center;
+	padding-left: 40px;
+	color: white !important;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+	transition: all 0.3s ease !important;
+}
+
+[data-rk] button[data-testid="rk-connect-button"]:hover {
+	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788) !important;
+	background-color: transparent !important;
+}
+
+/* Style the account button when connected */
+[data-rk] button[data-testid="rk-account-button"] {
+	background-color: #5a3c02 !important;
+	box-shadow: 0px 2px 2px #d48e02 !important;
+	border: 1px solid #D48E0287 !important;
+	border-radius: 12px !important;
+	color: white !important;
+	margin-top: 20px;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+	transition: all 0.3s ease !important;
+}
+
+[data-rk] button[data-testid="rk-account-button"]:hover {
+	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788) !important;
+}
+
+/* Override any internal text styling */
+[data-rk] button[data-testid="rk-connect-button"]>div,
+[data-rk] button[data-testid="rk-account-button"]>div {
+	color: white !important;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+}
+
+/* Style the chain button */
+[data-rk] button[data-testid="rk-chain-button"] {
+	background-color: transparent !important;
+	box-shadow: 0px 2px 2px #d48e02 !important;
+	border: 1px solid #D48E0287 !important;
+	border-radius: 12px !important;
+	color: white !important;
+	margin-top: 20px;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+	transition: all 0.3s ease !important;
+	padding: 8px 16px !important;
+}
+
+[data-rk] button[data-testid="rk-chain-button"]:hover {
+	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788) !important;
+	background-color: rgba(90, 60, 2, 0.3) !important;
+}
+
+/* Override any internal text styling for chain button */
+[data-rk] button[data-testid="rk-chain-button"]>div {
+	color: white !important;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+}
+
+/* Table responsive styles to replace TableScrollbar */
+.table-responsive {
+	max-height: 600px;
+	overflow-y: auto;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+}
+
+.table-responsive table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table-responsive thead {
+	position: sticky;
+	top: 0;
+	background-color: #2c2c2c;
+	z-index: 1;
+}
+
+.table-responsive th,
+.table-responsive td {
+	padding: 12px;
+	text-align: left;
+	border-bottom: 1px solid #444;
+}
+
+.table-responsive th {
+	background-color: #2c2c2c;
+	color: #ffaa00;
+	font-weight: 600;
+}
+
+.table-responsive tbody tr:hover {
+	background-color: rgba(255, 170, 0, 0.1);
+}
+
+/* Custom scrollbar for the table */
+.table-responsive::-webkit-scrollbar {
+	width: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+	background: #1a1a1a;
+	border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+	background: #ffaa00;
+	border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+	background: #d48e02;
+}

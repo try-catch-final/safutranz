@@ -1,0 +1,42 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "SaFuTranz Launchpad",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install cd client && npm run build cd client"
+  },
+  "author": "create",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.1",
+    "@web3auth/web3auth": "^1.1.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "flatted": "^3.2.7",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "magic-sdk": "^9.0.0",
+    "mongoose": "^8.2.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "path": "^0.12.7",
+    "react-alert": "^7.0.3",
+    "solc": "^0.8.28",
+    "validator": "^13.11.0",
+    "ethers": "^6.11.1",
+    "web3": "^4.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.0"
+  }
+}
