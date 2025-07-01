@@ -7,36 +7,42 @@
 		"client-install": "npm install --prefix client",
 		"start": "node server/server.js",
 		"server": "nodemon server/server.js",
-		"client": "npm start --prefix client",
+		"client": "npm run dev --prefix client",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install cd client && npm run build cd client"
 	},
 	"author": "create",
 	"license": "MIT",
 	"dependencies": {
-		"@material-ui/core": "^4.12.4",
-		"@openzeppelin/contracts": "^4.5.0",
+ 
+		"@openzeppelin/contracts": "^5.0.1",
+ 
 		"@web3auth/web3auth": "^1.1.4",
 		"bcryptjs": "^2.4.3",
-		"body-parser": "^1.18.3",
+		"body-parser": "^1.20.2",
 		"cors": "^2.8.5",
-		"dotenv": "^16.0.0",
-		"express": "^4.16.3",
-		"flatted": "^3.2.5",
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2",
+		"flatted": "^3.2.7",
 		"fs": "^0.0.1-security",
-		"jsonwebtoken": "^8.5.1",
+		"jsonwebtoken": "^9.0.2",
 		"magic-sdk": "^9.0.0",
-		"mongoose": "^5.7.5",
-		"passport": "^0.6.0",
-		"passport-jwt": "^4.0.0",
+		"mongoose": "^8.2.1",
+		"passport": "^0.7.0",
+		"passport-jwt": "^4.0.1",
 		"path": "^0.12.7",
 		"react-alert": "^7.0.3",
-		"solc": "^0.8.13",
-		"validator": "^13.7.0",
-		"web3": "^1.7.3"
+		"solc": "^0.8.28",
+		"validator": "^13.11.0",
+		"ethers": "^6.11.1",
+ 
+		"web3": "^4.5.0"
 	},
 	"devDependencies": {
-		"concurrently": "^3.6.1",
-		"nodemon": "^1.17.4"
+		"concurrently": "^8.2.2",
+		"nodemon": "^3.1.0"
+	},
+	"engines": {
+		"node": "21.x"
 	}
 }

@@ -13,6 +13,22 @@ const AuthSchema = new Schema({
 		type: String
 	},
 
+	// Wallet authentication fields
+	walletAddress: {
+		type: String,
+		unique: true,
+		sparse: true,
+		lowercase: true
+	},
+	walletType: {
+		type: String,
+		enum: ['MetaMask', 'WalletConnect', 'Coinbase', 'Other'],
+		default: 'MetaMask'
+	},
+	nonce: {
+		type: String
+	},
+
 	netFeeValueToken: {
 		BSC: {
 			type: Number,

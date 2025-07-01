@@ -7,15 +7,22 @@ const passport = require('passport');
 const api = require('./routes/api.js');
 const auth = require('./routes/auth');
 const alarm = require('./routes/alarm');
+const walletAuth = require('./routes/walletAuth');
 
 const db = require('./config/keys.js').mongoURI;
 
-const mongoOption = {
-	socketTimeoutMS: 60000,
-	keepAlive: true,
-	reconnectTries: 60000
-};
-mongoose.connect(db, mongoOption).then(() => console.log('MongoDB Connected')).catch((err) => console.log(err));
+// Updated Mongoose connection for v8.x with better error handling
+mongoose.connect(db, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	serverSelectionTimeoutMS: 5000,
+	connectTimeoutMS: 10000,
+})
+	.then(() => console.log('MongoDB Connected'))
+	.catch((err) => {
+		console.error('MongoDB connection error:', err.message);
+		process.exit(1);
+	});
 
 const app = express();
 
@@ -36,6 +43,7 @@ app.use(bodyParser.json());
 
 app.use('/api', api);
 app.use('/api/auth', auth);
+app.use('/api/auth/wallet', walletAuth);
 app.use('/api/alarm', alarm);
 
 // Serve static assets in production
