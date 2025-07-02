@@ -36,8 +36,6 @@ import FairLaunchRes from './components/fairLaunch/FairLaunchRes.jsx';
 
 import PieChart from './PieChart.jsx';
 
-import { Web3 } from 'web3';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 // Check for token
 const token = localStorage.jwtToken;

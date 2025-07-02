@@ -169,15 +169,7 @@ function Header(chainId) {
 							</Dropdown>
 						) : null}
 						<StyledConnectButton />
-						<Navbar.Item className="nav-links">
-							{isAuthenticated === true ? (
-								<div>
-									{netChainId}
-									<strong>&nbsp;{netText}</strong>
 
-								</div>
-							) : null}
-						</Navbar.Item>
 					</Navbar.Items>
 				</Navbar.Wrapper>
 			)}
@@ -290,19 +282,21 @@ const CSSReset = createGlobalStyle`
 `;
 
 const StyledConnectButton = styled(ConnectButton)`
-	padding: 10px 10px;
-	border-radius: 20px;
+	width: 160px;
+	height: 40px;
+	background-color: #00000000 !important;
+	box-shadow: 0px 2px 2px #d48e02;
+	border: 1px solid #D48E0287 !important;
+	border-radius: 4px !important;
+	margin-top: 10px;
+	color: white !important;
 	font-weight: 600;
 	margin-right: 15px;
 	margin-top: 20px;
-	background: #ffaa00;
-	color: #fff;
-	border: none;
 	cursor: pointer;
 	transition: 0.3s;
 	&:hover {
-		background: #ff8800;
-		color: #fff;
+		box-shadow: 0 0 15px rgba(255, 170, 0, 0.788);
 	}
 `;
 

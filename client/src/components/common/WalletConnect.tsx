@@ -94,7 +94,8 @@ const WalletConnect: React.FC<WalletConnectProps> = ({
             <div className="relative">
                 <button
                     onClick={() => setShowDropdown(!showDropdown)}
-                    className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-lg transition-all duration-200"
+                    className="db-button-color1 flex items-center space-x-2"
+                    style={{ width: '200px', height: '45px' }}
                 >
                     {getStatusIcon()}
                     <span className="font-medium">{formatAddress(account || '')}</span>
@@ -132,7 +133,8 @@ const WalletConnect: React.FC<WalletConnectProps> = ({
                             <div className="mt-4 pt-3 border-t border-gray-700">
                                 <button
                                     onClick={handleDisconnect}
-                                    className="w-full flex items-center justify-center space-x-2 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded transition-colors duration-200"
+                                    className="db-button w-full flex items-center justify-center space-x-2"
+                                    style={{ width: '100%', backgroundColor: '#dc2626', borderColor: '#dc2626' }}
                                 >
                                     <FaSignOutAlt />
                                     <span>Disconnect</span>
@@ -150,7 +152,8 @@ const WalletConnect: React.FC<WalletConnectProps> = ({
             <button
                 onClick={handleConnect}
                 disabled={walletAuth.isConnecting || walletAuth.isSigning}
-                className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200"
+                className="db-button-color flex items-center space-x-2"
+                style={{ width: '160px', height: '45px' }}
             >
                 {getStatusIcon()}
                 <span className="font-medium">

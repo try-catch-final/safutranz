@@ -55,4 +55,49 @@ p {
 	font-family: "Rajdhani";
 	src: url("components/assets/font/Rajdhani-Medium.ttf");
 }
-/*Have a Nice Day!!! :)*/
+
+[data-rk] button[data-testid="rk-connect-button"] {
+	width: 160px !important;
+	height: 40px !important;	
+	margin-top: 10px;
+	background-color: transparent !important;
+	box-shadow: 0px 2px 2px #d48e02 !important;
+	border: 1px solid #D48E0287 !important;
+	border-radius: 12px !important;
+	align-items: center;
+	padding-left: 40px;
+	color: white !important;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+	transition: all 0.3s ease !important;
+}
+
+[data-rk] button[data-testid="rk-connect-button"]:hover {
+	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788) !important;
+	background-color: transparent !important;
+}
+
+/* Style the account button when connected */
+[data-rk] button[data-testid="rk-account-button"] {
+	background-color: #5a3c02 !important;
+	box-shadow: 0px 2px 2px #d48e02 !important;
+	border: 1px solid #D48E0287 !important;
+	border-radius: 12px !important;
+	color: white !important;
+	margin-top: 10px;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+	transition: all 0.3s ease !important;
+}
+
+[data-rk] button[data-testid="rk-account-button"]:hover {
+	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788) !important;
+}
+
+/* Override any internal text styling */
+[data-rk] button[data-testid="rk-connect-button"] > div,
+[data-rk] button[data-testid="rk-account-button"] > div {
+	color: white !important;
+	font-weight: 600 !important;
+	font-family: 'Rajdhani' !important;
+}

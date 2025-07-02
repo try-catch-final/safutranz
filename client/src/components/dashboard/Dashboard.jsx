@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Col, Row, Modal, FlexboxGrid } from 'rsuite';
-import roketImage from '../assets/img/back/freepik--Character--inject-47.svg';
+import roketImage from '../assets/img/back/freepik--Character.svg';
 import tophard from '../assets/img/back/blob-1.svg';
 import bottomhard from '../assets/img/back/blob.svg';
 import triAngleLeft from '../assets/img/back/Polygon 2.svg';
@@ -361,6 +361,7 @@ class Dashboard extends Component {
 							<img src={todayMoonImg} alt="today moon image" className="dashbord-img-bottom" />
 							<img src={sonicWhalesImg} alt="sonic whales image" className="dashbord-img-bottom" />
 						</div>
+
 					</div>
 				</main>
 			</section>

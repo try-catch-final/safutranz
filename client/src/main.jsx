@@ -4,7 +4,7 @@ import './index.css';
 import App from './App.jsx';
 import "rsuite/styles/index.less";
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { mainnet, sepolia } from 'wagmi/chains';
@@ -21,11 +21,20 @@ const config = getDefaultConfig({
 
 const queryClient = new QueryClient();
 
+// Custom theme to match project's design system
+const customTheme = darkTheme({
+    accentColor: '#ffaa00',
+    accentColorForeground: 'white',
+    borderRadius: 'large',
+    fontStack: 'system',
+    overlayBlur: 'small',
+});
+
 root.render(
     <React.StrictMode>
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
-                <RainbowKitProvider>
+                <RainbowKitProvider theme={customTheme}>
                     <App />
                 </RainbowKitProvider>
             </QueryClientProvider>

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { userLogin } from '../../actions/authActions';
 import {
     FaWallet,
-    FaMetaMask,
+    FaEthereum,
     FaConnectdevelop,
     FaExclamationTriangle,
     FaCheckCircle,
@@ -231,37 +231,55 @@ const WalletLogin: React.FC<WalletLoginProps> = ({ userLogin, auth, errors }) =>
                     {/* Wallet Options */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                         {/* MetaMask */}
-                        <button
-                            onClick={connectMetaMask}
-                            disabled={isConnecting}
-                            className="wallet-option-btn flex flex-col items-center p-6 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-all duration-200 transform hover:scale-105"
-                        >
-                            <FaMetaMask className="text-2xl mb-2" />
-                            <span className="font-semibold">MetaMask</span>
-                            <span className="text-xs opacity-75">Most Popular</span>
-                        </button>
+                        <div className="text-center">
+                            <div className="flex flex-col items-center mb-4">
+                                <FaEthereum className="text-4xl text-orange-500 mb-2" />
+                                <span className="font-semibold text-white">MetaMask</span>
+                                <span className="text-xs text-gray-400">Most Popular</span>
+                            </div>
+                            <button
+                                onClick={connectMetaMask}
+                                disabled={isConnecting}
+                                className="db-button-color"
+                                style={{ width: '160px' }}
+                            >
+                                <strong>CONNECT</strong>
+                            </button>
+                        </div>
 
                         {/* WalletConnect */}
-                        <button
-                            onClick={connectWalletConnect}
-                            disabled={isConnecting}
-                            className="wallet-option-btn flex flex-col items-center p-6 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-all duration-200 transform hover:scale-105"
-                        >
-                            <SiWalletconnect className="text-2xl mb-2" />
-                            <span className="font-semibold">WalletConnect</span>
-                            <span className="text-xs opacity-75">Mobile Wallets</span>
-                        </button>
+                        <div className="text-center">
+                            <div className="flex flex-col items-center mb-4">
+                                <SiWalletconnect className="text-4xl text-blue-500 mb-2" />
+                                <span className="font-semibold text-white">WalletConnect</span>
+                                <span className="text-xs text-gray-400">Mobile Wallets</span>
+                            </div>
+                            <button
+                                onClick={connectWalletConnect}
+                                disabled={isConnecting}
+                                className="db-button-color"
+                                style={{ width: '160px' }}
+                            >
+                                <strong>CONNECT</strong>
+                            </button>
+                        </div>
 
                         {/* Coinbase Wallet */}
-                        <button
-                            onClick={connectCoinbase}
-                            disabled={isConnecting}
-                            className="wallet-option-btn flex flex-col items-center p-6 bg-gradient-to-br from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-all duration-200 transform hover:scale-105"
-                        >
-                            <BsCoin className="text-2xl mb-2" />
-                            <span className="font-semibold">Coinbase</span>
-                            <span className="text-xs opacity-75">Exchange Wallet</span>
-                        </button>
+                        <div className="text-center">
+                            <div className="flex flex-col items-center mb-4">
+                                <BsCoin className="text-4xl text-yellow-500 mb-2" />
+                                <span className="font-semibold text-white">Coinbase</span>
+                                <span className="text-xs text-gray-400">Exchange Wallet</span>
+                            </div>
+                            <button
+                                onClick={connectCoinbase}
+                                disabled={isConnecting}
+                                className="db-button-color"
+                                style={{ width: '160px' }}
+                            >
+                                <strong>CONNECT</strong>
+                            </button>
+                        </div>
                     </div>
 
                     {/* Error Display */}

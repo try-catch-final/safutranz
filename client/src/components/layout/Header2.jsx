@@ -19,7 +19,7 @@ function Header2() {
 
 	const setTrendingMarqueeData = () => {
 		if (padList.length !== 0) {
-			const buf1 = [ ...padList ];
+			const buf1 = [...padList];
 
 			let result = buf1.sort((a, b) => b.saleCount - a.saleCount);
 			result = result.slice(0, 10);
@@ -31,7 +31,7 @@ function Header2() {
 				);
 			});
 
-			const buf2 = [ ...padList ];
+			const buf2 = [...padList];
 			let buf4 = buf2.map((res, i) => {
 				return res.advertise ? (
 					<div key={i}>

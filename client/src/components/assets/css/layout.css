@@ -5,9 +5,11 @@
 
 	background-color: #1e29007e;
 	outline: solid 2px #daa520;
-	color: rgb(253, 253, 253); /*will change color of text within the element */
+	color: rgb(253, 253, 253);
+	/*will change color of text within the element */
 	text-align: center;
 }
+
 .marquee-1 {
 	/* border: solid 2px rgba(255, 170, 0, 0.788); */
 	height: 40px;
@@ -19,6 +21,7 @@
 	z-index: 1 !important;
 	font-size: 20px;
 }
+
 .marquee-tranding {
 	margin-top: -40px;
 	width: 130px;
@@ -32,8 +35,8 @@
 	position: absolute;
 	z-index: 2;
 }
+
 .marquee-advertise {
-	margin-top: 50px;
 	font-size: 20px;
 	height: 40px;
 	/* UI Properties */
@@ -42,6 +45,7 @@
 	border-radius: 10px;
 	opacity: 1;
 }
+
 .nav-links-mobile {
 	margin-right: 1px !important;
 	border-radius: 5px !important;
@@ -49,13 +53,15 @@
 
 	background-color: #1e29007e;
 	outline: solid 2px #daa520;
-	color: rgb(253, 253, 253); /*will change color of text within the element */
+	color: rgb(253, 253, 253);
+	/*will change color of text within the element */
 	text-align: center;
 }
 
 .nav-links:hover {
 	box-shadow: 0 0 18px rgba(255, 170, 0, 0.788);
-	color: white; /*will change color of text within the element on hover */
+	color: white;
+	/*will change color of text within the element on hover */
 }
 
 #nav-drop {
@@ -63,12 +69,15 @@
 	border-radius: 5px;
 	background-color: #1e29007e;
 	outline: solid 2px #daa520;
-	color: rgb(253, 253, 253); /*will change color of text within the element */
+	color: rgb(253, 253, 253);
+	/*will change color of text within the element */
 }
+
 #nav-drop:hover {
 	color: white;
 	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788);
 }
+
 #nav-drop-mobile {
 	margin-right: 1px;
 	border-radius: 5px;
@@ -77,8 +86,10 @@
 	padding-right: 5px !important;
 	background-color: #1e29007e;
 	outline: solid 2px #daa520;
-	color: rgb(252, 252, 252); /*will change color of text within the element */
+	color: rgb(252, 252, 252);
+	/*will change color of text within the element */
 }
+
 #nav-drop-mobile:hover {
 	color: white;
 	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788);
@@ -87,11 +98,13 @@
 .nav-icon:hover {
 	box-shadow: 0 0 15px rgba(255, 170, 0, 0.788);
 }
+
 .nav-icon {
 	height: 30px;
 	color: white;
 	margin-top: 25px;
 }
+
 .tranding {
 	top: 66px;
 	left: 22px;
@@ -101,6 +114,7 @@
 	border-radius: 20px;
 	opacity: 1;
 }
+
 .nav-logo {
 	display: inline-block;
 }
@@ -145,6 +159,7 @@
 	border-radius: 53px;
 	opacity: 1;
 }
+
 .lead1 {
 	padding-left: 3%;
 	padding-right: 3%;
@@ -158,6 +173,7 @@
 	border-radius: 18px;
 	opacity: 1;
 }
+
 .lead2 {
 	padding-left: 3%;
 	padding-right: 3%;
@@ -171,6 +187,7 @@
 	border-radius: 30px;
 	opacity: 1;
 }
+
 .lead3 {
 	text-align: center;
 	letter-spacing: 0.98px;
@@ -187,6 +204,7 @@
 	font: normal normal 900 25px Arial;
 	opacity: 1;
 }
+
 .footer-btn {
 	margin-top: 20px;
 	margin-bottom: 90px;
@@ -202,20 +220,24 @@
 	.has-text-centered-mobile {
 		text-align: center !important;
 	}
+
 	.big-small-screen {
 		margin-left: -35px;
 		margin-right: 0px;
 	}
+
 	#toggler {
 		margin-left: -30px;
 	}
 }
 
-@media print, screen and (min-width: 769px) {
+@media print,
+screen and (min-width: 769px) {
 	.big-small-screen {
 		margin-left: -35px;
 		margin-right: 50px;
 	}
+
 	.has-text-centered-tablet {
 		text-align: center !important;
 	}
@@ -266,6 +288,7 @@
 .has-text-centered {
 	text-align: center !important;
 }
+
 .help {
 	display: block;
 	font-size: 1.5rem;
@@ -308,9 +331,11 @@
 .help.is-danger {
 	color: #f14668;
 }
+
 .is-flex-grow-1 {
 	flex-grow: 1 !important;
 }
+
 .is-flex {
 	display: flex !important;
 }
@@ -373,13 +398,14 @@ a.has-text-primary-dark:hover {
 	user-select: none;
 }
 
-.ant-card-small > .ant-card-body {
+.ant-card-small>.ant-card-body {
 	padding: 12px;
 }
 
 .ant-card-bordered {
 	border: 1px solid #f0f0f0;
 }
+
 .ant-card-bordered .ant-card-cover {
 	margin-top: -1px;
 	margin-right: -1px;
@@ -389,8 +415,9 @@ a.has-text-primary-dark:hover {
 .MainLayout_content__2mZF9 {
 	min-height: 80vh;
 }
-.ant-layout.ant-layout-has-sider > .ant-layout,
-.ant-layout.ant-layout-has-sider > .ant-layout-content {
+
+.ant-layout.ant-layout-has-sider>.ant-layout,
+.ant-layout.ant-layout-has-sider>.ant-layout-content {
 	width: 0;
 }
 
@@ -416,8 +443,8 @@ a.has-text-primary-dark:hover {
 	flex-direction: row;
 }
 
-.ant-layout.ant-layout-has-sider > .ant-layout,
-.ant-layout.ant-layout-has-sider > .ant-layout-content {
+.ant-layout.ant-layout-has-sider>.ant-layout,
+.ant-layout.ant-layout-has-sider>.ant-layout-content {
 	width: 0;
 }
 
@@ -479,7 +506,7 @@ a.has-text-primary-dark:hover {
 	transition: all .2s;
 }
 
-.ant-layout-sider-zero-width > * {
+.ant-layout-sider-zero-width>* {
 	overflow: hidden;
 }
 
@@ -571,6 +598,7 @@ a.has-text-primary-dark:hover {
 .white-font {
 	color: #fff;
 }
+
 /* background style */
 
 .photo {
