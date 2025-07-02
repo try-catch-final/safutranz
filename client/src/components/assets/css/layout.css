@@ -66,11 +66,12 @@
 
 #nav-drop {
 	margin-right: 20px;
-	border-radius: 5px;
+	border-radius: 12px;
 	background-color: #1e29007e;
 	outline: solid 2px #daa520;
+	height: 38px;
 	color: rgb(253, 253, 253);
-	/*will change color of text within the element */
+
 }
 
 #nav-drop:hover {
