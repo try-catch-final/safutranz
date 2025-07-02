@@ -74,105 +74,139 @@ class CreateToken extends Component {
 	onSubmit(e) {
 		e.preventDefault();
 
+		// Validate all required fields
+		if (!this.state.tokenType || !this.state.tokenName || !this.state.symbol || !this.state.decimals || !this.state.totalSupply) {
+			alert('Please fill in all required fields!');
+			return;
+		}
+
+		// Validate numeric fields
+		if (this.state.decimals <= 0) {
+			alert('Decimals must be greater than 0!');
+			return;
+		}
+
+		if (this.state.totalSupply <= 0) {
+			alert('Total supply must be greater than 0!');
+			return;
+		}
+
+
 		valCreateTokenSTate = true;
 
 		const tokenName = this.state.tokenName;
 		const symbol = this.state.symbol;
 		const decimals = this.state.decimals;
 		const totalSupply = this.state.totalSupply;
-		if (window.localStorage.getItem('isAuthenticated') === 'true') {
-			const userAddress = window.localStorage.getItem('userAddress');
-			//
-			axios
-				.get(`/api/getTokenContractAbi`)
-				.then(async (res) => {
-					const abi = res.data;
-					axios
-						.get(`/api/getTokenContractBytecode`)
-						.then(async (res) => {
-							const bytecode = res.data.object;
-							const chainID = window.localStorage.getItem('chainId');
 
-							var tokenFee = 0;
+		const userAddress = window.localStorage.getItem('userAddress');
 
-							if (netFeeValue !== undefined && netFeeValue !== null && netFeeValue.data !== null && netFeeValue.data !== undefined) {
-								switch (chainID) {
-									case '56':
-										tokenFee = Number(netFeeValue.data.BSC);
-										break;
-									case '97':
-										tokenFee = Number(netFeeValue.data.BSCTest);
-										break;
-									case '1':
-										tokenFee = Number(netFeeValue.data.ETH);
-										break;
-									case '3':
-										tokenFee = Number(netFeeValue.data.Ropsten);
-										break;
-									case '25':
-										tokenFee = Number(netFeeValue.data.Cronos);
-										break;
-									case '941':
-										tokenFee = Number(netFeeValue.data.PulseTest);
-										break;
-									case '43114':
-										tokenFee = Number(netFeeValue.data.Avalanche);
-										break;
-									case '43113':
-										tokenFee = Number(netFeeValue.data.AvalancheTest);
-										break;
-									case '137':
-										tokenFee = Number(netFeeValue.data.Polygon);
-										break;
-									default:
-										tokenFee = 0.15;
-								}
-							} else {
-								tokenFee = 0.15;
+		axios
+			.get(`/api/getTokenContractAbi`)
+			.then(async (res) => {
+				const abi = res.data;
+				axios
+					.get(`/api/getTokenContractBytecode`)
+					.then(async (res) => {
+						const bytecode = res.data.object;
+						const chainID = window.localStorage.getItem('chainId');
+
+						var tokenFee = 0;
+
+						if (netFeeValue !== undefined && netFeeValue !== null && netFeeValue.data !== null && netFeeValue.data !== undefined) {
+							switch (chainID) {
+								case '56':
+									tokenFee = Number(netFeeValue.data.BSC);
+									break;
+								case '97':
+									tokenFee = Number(netFeeValue.data.BSCTest);
+									break;
+								case '1':
+									tokenFee = Number(netFeeValue.data.ETH);
+									break;
+								case '3':
+									tokenFee = Number(netFeeValue.data.Ropsten);
+									break;
+								case '25':
+									tokenFee = Number(netFeeValue.data.Cronos);
+									break;
+								case '941':
+									tokenFee = Number(netFeeValue.data.PulseTest);
+									break;
+								case '43114':
+									tokenFee = Number(netFeeValue.data.Avalanche);
+									break;
+								case '43113':
+									tokenFee = Number(netFeeValue.data.AvalancheTest);
+									break;
+								case '137':
+									tokenFee = Number(netFeeValue.data.Polygon);
+									break;
+								default:
+									tokenFee = 0.15;
 							}
+						} else {
+							tokenFee = 0.15;
+						}
 
-							const web3 = new Web3(window.ethereum);
-							const deploy_contract = new web3.eth.Contract(abi);
+						const web3 = new Web3(window.ethereum);
+						const deploy_contract = new web3.eth.Contract(abi);
 
-							let payload = {
-								data: '0x' + bytecode,
-								arguments: [
-									tokenName,
-									symbol,
-									decimals,
-									String(toFixed(totalSupply * 10 ** decimals)),
-									receiverAddress,
-									// web3.utils.toWei(String(0.01), 'ether')
-									web3.utils.toWei(String(tokenFee), 'ether')
-								]
-							};
+						let payload = {
+							data: '0x' + bytecode,
+							arguments: [
+								tokenName,
+								symbol,
+								decimals,
+								String(toFixed(totalSupply * 10 ** decimals)),
+								receiverAddress,
+								// web3.utils.toWei(String(0.01), 'ether')
+								web3.utils.toWei(String(tokenFee), 'ether')
+							]
+						};
 
-							let parameter = {
-								from: userAddress,
-								value: web3.utils.toWei(String(tokenFee), 'ether')
-							};
+						let parameter = {
+							from: userAddress,
+							value: web3.utils.toWei(String(tokenFee), 'ether')
+						};
 
-							deploy_contract
-								.deploy(payload)
-								.send(parameter, (err, transactionHash) => {
-									console.log('Transaction Hash :', transactionHash);
-								})
-								.on('confirmation', () => { })
-								.then((newContractInstance) => {
-									this.setState({
-										tokenAddress: newContractInstance.options.address
-									});
-									window.localStorage.setItem('tokenAddress', newContractInstance.options.address);
-									window.location.href = `/TokenRes`;
+						deploy_contract
+							.deploy(payload)
+							.send(parameter, (err, transactionHash) => {
+								if (err) {
+									console.error('Transaction Error:', err);
+									alert('Transaction failed: ' + err.message);
+									valCreateTokenSTate = false;
+									return;
+								}
+								console.log('Transaction Hash :', transactionHash);
+							})
+							.on('confirmation', () => { })
+							.then((newContractInstance) => {
+								this.setState({
+									tokenAddress: newContractInstance.options.address
 								});
-						})
-						.catch((err) => console.log(err));
-				})
-				.catch((err) => console.log(err));
-		} else {
-			alert('You must connect a wallet!');
-		}
-		valCreateTokenSTate = false;
+								window.localStorage.setItem('tokenAddress', newContractInstance.options.address);
+								alert('Token created successfully!');
+								window.location.href = `/TokenRes`;
+							})
+							.catch((err) => {
+								console.error('Contract deployment error:', err);
+								alert('Failed to deploy contract: ' + err.message);
+								valCreateTokenSTate = false;
+							});
+					})
+					.catch((err) => {
+						console.error('Bytecode fetch error:', err);
+						alert('Failed to fetch contract bytecode');
+						valCreateTokenSTate = false;
+					});
+			})
+			.catch((err) => {
+				console.error('ABI fetch error:', err);
+				alert('Failed to fetch contract ABI');
+				valCreateTokenSTate = false;
+			});
 	}
 
 	handleInput(e) {
@@ -241,8 +275,10 @@ class CreateToken extends Component {
 	}
 
 	render() {
-		if (this.props.auth.escrowAddress !== undefined) {
-			const { escrowAddress } = this.props.auth.escrowAddress.data;
+		// Safely extract escrowAddress data with proper null/undefined checks
+		const escrowData = this.props.auth.escrowAddress?.data;
+		if (escrowData && escrowData.escrowAddress) {
+			const { escrowAddress } = escrowData;
 			const { netFeeToken } = this.props.auth;
 
 			receiverAddress = escrowAddress;
@@ -301,8 +337,9 @@ class CreateToken extends Component {
 								name="tokenType"
 								placeholder="Standard Token"
 							>
-								<option value="volvo">StandardToken</option>
-								<option value="volvo">StandardToken2</option>
+								<option value="">Select Token Type</option>
+								<option value="StandardToken">StandardToken</option>
+								<option value="StandardToken2">StandardToken2</option>
 							</select>
 							<div className="invalid-feedback">{this.state.formErrors.tokenType}</div>
 						</div>
@@ -402,8 +439,8 @@ class CreateToken extends Component {
 						</Col>
 					</Row>
 					<div className="has-text-centered mt-6 pt-4 mb-4">
-						<button type="submit" className="token-button" onClick={this.onSubmit}>
-							<stron>NEXT</stron>
+						<button type="submit" className="token-button">
+							<strong>NEXT</strong>
 						</button>
 					</div>
 					<p className="token-info">Create token fee: {limitData}</p>

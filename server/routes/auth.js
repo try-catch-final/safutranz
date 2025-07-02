@@ -236,34 +236,73 @@ router.post('/escrow', (req, res) => {
 router.get('/escrow', (req, res) => {
 	User.findOne()
 		.then((data) => {
-			res.json(data);
+			if (data) {
+				res.json(data);
+			} else {
+				// Return null if no user exists
+				res.json(null);
+			}
 		})
-		.catch((err) => res.statu(404).json(err));
+		.catch((err) => {
+			console.log(err);
+			res.status(404).json(err);
+		});
 });
 
 // @route ---> SET api/auth/setNetFeeValueToken
 // @desc  ---> set net fee input
 // @access --> Public
 router.post('/setNetFeeValueToken', (req, res) => {
-	var netFee = {};
 	User.findOne()
 		.then((dat) => {
-			netFee = dat.netFeeValueToken;
+			if (!dat) {
+				// Create new user if none exists
+				const newUser = new User({
+					netFeeValueToken: {
+						BSC: req.body.BSC || 0.15,
+						BSCTest: req.body.BSCTest || 0.02,
+						ETH: req.body.ETH || 0.03,
+						Ropsten: req.body.Ropsten || 0.005,
+						Cronos: req.body.Cronos || 80,
+						PulseTest: req.body.PulseTest || 0.1,
+						Avalanche: req.body.Avalanche || 0.8,
+						AvalancheTest: req.body.AvalancheTest || 0.1,
+						Polygon: req.body.Polygon || 30
+					}
+				});
+				newUser.save()
+					.then((user) => res.json(user))
+					.catch((err) => {
+						console.log(err);
+						res.status(500).json(err);
+					});
+			} else {
+				// Update existing user
+				var netFee = dat.netFeeValueToken || {};
 
-			if (req.body.BSC !== undefined) netFee.BSC = Number(req.body.BSC);
-			if (req.body.BSCTest !== undefined) netFee.BSCTest = Number(req.body.BSCTest);
-			if (req.body.ETH !== undefined) netFee.ETH = Number(req.body.ETH);
-			if (req.body.Ropsten !== undefined) netFee.Ropsten = Number(req.body.Ropsten);
-			if (req.body.Cronos !== undefined) netFee.Cronos = Number(req.body.Cronos);
-			if (req.body.PulseTest !== undefined) netFee.PulseTest = Number(req.body.PulseTest);
-			if (req.body.Avalanche !== undefined) netFee.Avalanche = Number(req.body.Avalanche);
-			if (req.body.Polygon !== undefined) netFee.Polygon = Number(req.body.Polygon);
+				if (req.body.BSC !== undefined) netFee.BSC = Number(req.body.BSC);
+				if (req.body.BSCTest !== undefined) netFee.BSCTest = Number(req.body.BSCTest);
+				if (req.body.ETH !== undefined) netFee.ETH = Number(req.body.ETH);
+				if (req.body.Ropsten !== undefined) netFee.Ropsten = Number(req.body.Ropsten);
+				if (req.body.Cronos !== undefined) netFee.Cronos = Number(req.body.Cronos);
+				if (req.body.PulseTest !== undefined) netFee.PulseTest = Number(req.body.PulseTest);
+				if (req.body.Avalanche !== undefined) netFee.Avalanche = Number(req.body.Avalanche);
+				if (req.body.AvalancheTest !== undefined) netFee.AvalancheTest = Number(req.body.AvalancheTest);
+				if (req.body.Polygon !== undefined) netFee.Polygon = Number(req.body.Polygon);
 
-			dat.netFeeValueToken = netFee;
-			dat.save().catch((err) => console.log(err));
-			res.json(dat);
+				dat.netFeeValueToken = netFee;
+				dat.save()
+					.then((user) => res.json(user))
+					.catch((err) => {
+						console.log(err);
+						res.status(500).json(err);
+					});
+			}
 		})
-		.catch((err) => res.status(404).json(err));
+		.catch((err) => {
+			console.log(err);
+			res.status(404).json(err);
+		});
 });
 
 // @route ---> GET api/auth/getNetFeeValueToken
@@ -272,9 +311,73 @@ router.post('/setNetFeeValueToken', (req, res) => {
 router.get('/getNetFeeValueToken', (req, res) => {
 	User.findOne()
 		.then((dat) => {
-			res.json(dat.netFeeValueToken);
+			if (dat && dat.netFeeValueToken) {
+				res.json(dat.netFeeValueToken);
+			} else {
+				// Create default user with default fee values if none exists
+				const defaultNetFeeValueToken = {
+					BSC: 0.15,
+					BSCTest: 0.02,
+					ETH: 0.03,
+					Ropsten: 0.005,
+					Cronos: 80,
+					PulseTest: 0.1,
+					Avalanche: 0.8,
+					AvalancheTest: 0.1,
+					Polygon: 30
+				};
+
+				if (!dat) {
+					// Create new user with default values
+					const newUser = new User({
+						netFeeValueToken: defaultNetFeeValueToken,
+						netFeeValueLaunch: {
+							BSC: 0.7,
+							BSCTest: 0.3,
+							ETH: 0.13,
+							Ropsten: 0.02,
+							Cronos: 800,
+							PulseTest: 0.2,
+							Avalanche: 8,
+							AvalancheTest: 0.3,
+							Polygon: 85
+						},
+						raisedFee: 17
+					});
+
+					newUser.save()
+						.then(() => res.json(defaultNetFeeValueToken))
+						.catch((err) => {
+							console.log(err);
+							res.json(defaultNetFeeValueToken);
+						});
+				} else {
+					// Update existing user with default fee values
+					dat.netFeeValueToken = defaultNetFeeValueToken;
+					dat.save()
+						.then(() => res.json(defaultNetFeeValueToken))
+						.catch((err) => {
+							console.log(err);
+							res.json(defaultNetFeeValueToken);
+						});
+				}
+			}
 		})
-		.catch((err) => res.status(404).json(err));
+		.catch((err) => {
+			console.log(err);
+			// Return default values even if database error occurs
+			res.json({
+				BSC: 0.15,
+				BSCTest: 0.02,
+				ETH: 0.03,
+				Ropsten: 0.005,
+				Cronos: 80,
+				PulseTest: 0.1,
+				Avalanche: 0.8,
+				AvalancheTest: 0.1,
+				Polygon: 30
+			});
+		});
 });
 
 // @route ---> SET api/auth/setNetFeeValueLaunch
@@ -309,9 +412,39 @@ router.post('/setNetFeeValueLaunch', (req, res) => {
 router.get('/getNetFeeValueLaunch', (req, res) => {
 	User.findOne()
 		.then((dat) => {
-			res.json(dat.netFeeValueLaunch);
+			if (dat && dat.netFeeValueLaunch) {
+				res.json(dat.netFeeValueLaunch);
+			} else {
+				// Return default launch fee values if none exists
+				const defaultNetFeeValueLaunch = {
+					BSC: 0.7,
+					BSCTest: 0.3,
+					ETH: 0.13,
+					Ropsten: 0.02,
+					Cronos: 800,
+					PulseTest: 0.2,
+					Avalanche: 8,
+					AvalancheTest: 0.3,
+					Polygon: 85
+				};
+				res.json(defaultNetFeeValueLaunch);
+			}
 		})
-		.catch((err) => res.status(404).json(err));
+		.catch((err) => {
+			console.log(err);
+			// Return default values even if database error occurs
+			res.json({
+				BSC: 0.7,
+				BSCTest: 0.3,
+				ETH: 0.13,
+				Ropsten: 0.02,
+				Cronos: 800,
+				PulseTest: 0.2,
+				Avalanche: 8,
+				AvalancheTest: 0.3,
+				Polygon: 85
+			});
+		});
 });
 
 // @route ---> SET api/auth/setRaisedFee
@@ -346,7 +479,7 @@ router.post('/setSubscribeAddress', (req, res) => {
 
 	User.findOne()
 		.then((dat) => {
-			var data = [ ...dat.subcriberAddress ];
+			var data = [...dat.subcriberAddress];
 			let buf = data.find((el) => el.url === req.body.url);
 			if (buf !== undefined) {
 				res.json(buf);
