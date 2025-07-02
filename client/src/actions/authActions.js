@@ -150,7 +150,7 @@ export const setNetFeeValueToken = (data) => (dispatch) => {
 
 export const getNetFeeValueToken = () => (dispatch) => {
 	axios
-		.get(`/api/auth/getNetFeeValueToken/`)
+		.get(`/api/auth/getNetFeeValueToken`)
 		.then((data) =>
 			dispatch({
 				type: GET_NETFEE_TOKEN,
@@ -167,14 +167,14 @@ export const getNetFeeValueToken = () => (dispatch) => {
 
 export const setNetFeeValueLaunch = (data) => (dispatch) => {
 	axios
-		.post(`/api/auth/setNetFeeValueLaunch/`, data)
+		.post(`/api/auth/setNetFeeValueLaunch`, data)
 		.then(alert('LaunchPad mint Fee value Set Successfully'))
 		.catch((err) => console.log(err));
 };
 
 export const getNetFeeValueLaunch = () => (dispatch) => {
 	axios
-		.get(`/api/auth/getNetFeeValueLaunch/`)
+		.get(`/api/auth/getNetFeeValueLaunch`)
 		.then((data) =>
 			dispatch({
 				type: GET_NETFEE_LAUNCH,
@@ -191,14 +191,14 @@ export const getNetFeeValueLaunch = () => (dispatch) => {
 
 export const setRaisedFee = (data) => (dispatch) => {
 	axios
-		.post('api/auth/setRaisedFee/', data)
+		.post('/api/auth/setRaisedFee', data)
 		.then(alert('Token raised fee value Set Successfully'))
 		.catch((err) => console.log(err));
 };
 
 export const getRaisedFee = () => (dispatch) => {
 	axios
-		.get('/api/auth/getRaisedFee/')
+		.get('/api/auth/getRaisedFee')
 		.then((data) =>
 			dispatch({
 				type: GET_RAISEDFEE,

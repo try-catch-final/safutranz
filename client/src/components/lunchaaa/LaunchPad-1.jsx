@@ -168,10 +168,10 @@ class LaunchPad1 extends Component {
 	}
 
 	render() {
-		if (this.props.auth.netFeeLaunch !== undefined) {
+		if (this.props.auth.netFeeLaunch !== undefined && this.props.auth.netFeeLaunch !== null) {
 			const { netFeeLaunch } = this.props.auth;
 
-			if (netFeeLaunch !== undefined) {
+			if (netFeeLaunch !== undefined && netFeeLaunch !== null && netFeeLaunch.data !== null && netFeeLaunch.data !== undefined) {
 				switch (window.localStorage.getItem('chainId')) {
 					case '1':
 						netValue = `${netFeeLaunch.data.ETH} ETH`;

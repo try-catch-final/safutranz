@@ -152,7 +152,7 @@ class LaunchPad4 extends Component {
 			const { netFeeLaunch, raisedFee } = this.props.auth;
 
 			receiverAddress = escrowAddress;
-			if (netFeeLaunch !== undefined) {
+			if (netFeeLaunch !== undefined && netFeeLaunch !== null && netFeeLaunch.data !== null && netFeeLaunch.data !== undefined) {
 				switch (window.localStorage.getItem('chainId')) {
 					case '56':
 						tokenFee = Number(netFeeLaunch.data.BSC);

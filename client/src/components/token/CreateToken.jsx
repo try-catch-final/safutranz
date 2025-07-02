@@ -95,36 +95,40 @@ class CreateToken extends Component {
 
 							var tokenFee = 0;
 
-							switch (chainID) {
-								case '56':
-									tokenFee = Number(netFeeValue.data.BSC);
-									break;
-								case '97':
-									tokenFee = Number(netFeeValue.data.BSCTest);
-									break;
-								case '1':
-									tokenFee = Number(netFeeValue.data.ETH);
-									break;
-								case '3':
-									tokenFee = Number(netFeeValue.data.Ropsten);
-									break;
-								case '25':
-									tokenFee = Number(netFeeValue.data.Cronos);
-									break;
-								case '941':
-									tokenFee = Number(netFeeValue.data.PulseTest);
-									break;
-								case '43114':
-									tokenFee = Number(netFeeValue.data.Avalanche);
-									break;
-								case '43113':
-									tokenFee = Number(netFeeValue.data.AvalancheTest);
-									break;
-								case '137':
-									tokenFee = Number(netFeeValue.data.Polygon);
-									break;
-								default:
-									tokenFee = 0.15;
+							if (netFeeValue !== undefined && netFeeValue !== null && netFeeValue.data !== null && netFeeValue.data !== undefined) {
+								switch (chainID) {
+									case '56':
+										tokenFee = Number(netFeeValue.data.BSC);
+										break;
+									case '97':
+										tokenFee = Number(netFeeValue.data.BSCTest);
+										break;
+									case '1':
+										tokenFee = Number(netFeeValue.data.ETH);
+										break;
+									case '3':
+										tokenFee = Number(netFeeValue.data.Ropsten);
+										break;
+									case '25':
+										tokenFee = Number(netFeeValue.data.Cronos);
+										break;
+									case '941':
+										tokenFee = Number(netFeeValue.data.PulseTest);
+										break;
+									case '43114':
+										tokenFee = Number(netFeeValue.data.Avalanche);
+										break;
+									case '43113':
+										tokenFee = Number(netFeeValue.data.AvalancheTest);
+										break;
+									case '137':
+										tokenFee = Number(netFeeValue.data.Polygon);
+										break;
+									default:
+										tokenFee = 0.15;
+								}
+							} else {
+								tokenFee = 0.15;
 							}
 
 							const web3 = new Web3(window.ethereum);
@@ -245,7 +249,7 @@ class CreateToken extends Component {
 
 			netFeeValue = netFeeToken;
 
-			if (netFeeValue !== undefined) {
+			if (netFeeValue !== undefined && netFeeValue !== null && netFeeValue.data !== null && netFeeValue.data !== undefined) {
 				switch (window.localStorage.getItem('chainId')) {
 					case '1':
 						limitData = netFeeValue.data.ETH + ' ETH';

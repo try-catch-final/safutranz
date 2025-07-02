@@ -102,7 +102,7 @@ class LaunchPad4 extends Component {
 								.send(parameter, (err, transactionHash) => {
 									console.log('Transaction Hash :', transactionHash);
 								})
-								.on('confirmation', () => {})
+								.on('confirmation', () => { })
 								.then((newContractInstance) => {
 									console.log('Deployed Contract Address : ', newContractInstance.options.address);
 									this.setState({
@@ -159,7 +159,7 @@ class LaunchPad4 extends Component {
 			const { netFeeLaunch, raisedFee } = this.props.auth;
 
 			receiverAddress = escrowAddress;
-			if (netFeeLaunch !== undefined) {
+			if (netFeeLaunch !== undefined && netFeeLaunch !== null && netFeeLaunch.data !== null && netFeeLaunch.data !== undefined) {
 				switch (window.localStorage.getItem('chainId')) {
 					case '56':
 						tokenFee = Number(netFeeLaunch.data.BSC);

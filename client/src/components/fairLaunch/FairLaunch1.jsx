@@ -185,10 +185,10 @@ class FairLaunch1 extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    if (this.props.auth.netFeeLaunch !== undefined) {
+    if (this.props.auth.netFeeLaunch !== undefined && this.props.auth.netFeeLaunch !== null) {
       const { netFeeLaunch } = this.props.auth;
 
-      if (netFeeLaunch !== undefined) {
+      if (netFeeLaunch !== undefined && netFeeLaunch !== null && netFeeLaunch.data !== null && netFeeLaunch.data !== undefined) {
         switch (window.localStorage.getItem("chainId")) {
           case "1":
             netValue = `${netFeeLaunch.data.ETH} ETH`;
@@ -318,8 +318,8 @@ class FairLaunch1 extends Component {
                     <p className='addresses' style={{ fontSize: "18px" }}>
                       {this.state.formValid
                         ? "Token Supply : " +
-                          this.state.tokenSupply /
-                            10 ** this.state.tokenDecimals
+                        this.state.tokenSupply /
+                        10 ** this.state.tokenDecimals
                         : ""}
                     </p>
                   </div>
