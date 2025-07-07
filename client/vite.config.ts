@@ -29,7 +29,16 @@ export default defineConfig({
         global: 'globalThis'
     },
     server: {
+        host: '0.0.0.0',
         port: 4000,
+        allowedHosts: [
+            'localhost',
+            '127.0.0.1',
+            'safutranz.com',
+            'www.safutranz.com',
+            '.safutranz.com',
+            'all'
+        ],
         proxy: {
             '/api': {
                 target: 'http://localhost:5000',
