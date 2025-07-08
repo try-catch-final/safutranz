@@ -1,32 +1,15 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Web3 } from 'web3';
 
-interface Web3ContextType {
-    web3: Web3 | null;
-    account: string | null;
-    chainId: string | null;
-    isConnected: boolean;
-    isConnecting: boolean;
-    connectWallet: () => Promise<void>;
-    disconnectWallet: () => void;
-    switchNetwork: (chainId: string) => Promise<void>;
-    signMessage: (message: string) => Promise<string>;
-    error: string | null;
-}
+const Web3Context = createContext(undefined);
 
-const Web3Context = createContext<Web3ContextType | undefined>(undefined);
-
-interface Web3ProviderProps {
-    children: ReactNode;
-}
-
-export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
-    const [web3, setWeb3] = useState<Web3 | null>(null);
-    const [account, setAccount] = useState<string | null>(null);
-    const [chainId, setChainId] = useState<string | null>(null);
+export const Web3Provider = ({ children }) => {
+    const [web3, setWeb3] = useState(null);
+    const [account, setAccount] = useState(null);
+    const [chainId, setChainId] = useState(null);
     const [isConnected, setIsConnected] = useState(false);
     const [isConnecting, setIsConnecting] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState(null);
 
     // Initialize Web3 and check for existing connection
     useEffect(() => {
@@ -46,7 +29,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
                     }
 
                     // Listen for account changes
-                    window.ethereum.on('accountsChanged', (accounts: string[]) => {
+                    window.ethereum.on('accountsChanged', (accounts) => {
                         if (accounts.length === 0) {
                             setAccount(null);
                             setIsConnected(false);
@@ -57,7 +40,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
                     });
 
                     // Listen for chain changes
-                    window.ethereum.on('chainChanged', (chainId: string) => {
+                    window.ethereum.on('chainChanged', (chainId) => {
                         setChainId(parseInt(chainId, 16).toString());
                     });
 
@@ -112,7 +95,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
             localStorage.setItem('walletConnected', 'true');
             localStorage.setItem('walletAddress', account);
 
-        } catch (error: any) {
+        } catch (error) {
             setError(error.message || 'Failed to connect wallet');
             setIsConnected(false);
         } finally {
@@ -131,7 +114,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
         localStorage.removeItem('walletAddress');
     };
 
-    const switchNetwork = async (targetChainId: string) => {
+    const switchNetwork = async (targetChainId) => {
         if (!window.ethereum) {
             setError('No wallet provider found');
             return;
@@ -142,7 +125,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
                 method: 'wallet_switchEthereumChain',
                 params: [{ chainId: `0x${parseInt(targetChainId).toString(16)}` }],
             });
-        } catch (error: any) {
+        } catch (error) {
             // If the network doesn't exist, add it
             if (error.code === 4902) {
                 try {
@@ -159,7 +142,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
         }
     };
 
-    const signMessage = async (message: string): Promise<string> => {
+    const signMessage = async (message) => {
         if (!web3 || !account) {
             throw new Error('Wallet not connected');
         }
@@ -167,13 +150,13 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
         try {
             const signature = await web3.eth.personal.sign(message, account, '');
             return signature;
-        } catch (error: any) {
+        } catch (error) {
             throw new Error('Failed to sign message: ' + error.message);
         }
     };
 
-    const getNetworkConfig = (chainId: string) => {
-        const networks: { [key: string]: any } = {
+    const getNetworkConfig = (chainId) => {
+        const networks = {
             '1': {
                 chainId: '0x1',
                 chainName: 'Ethereum Mainnet',
@@ -200,7 +183,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
         return networks[chainId] || networks['1'];
     };
 
-    const value: Web3ContextType = {
+    const value = {
         web3,
         account,
         chainId,
@@ -220,7 +203,7 @@ export const Web3Provider: React.FC<Web3ProviderProps> = ({ children }) => {
     );
 };
 
-export const useWeb3 = (): Web3ContextType => {
+export const useWeb3 = () => {
     const context = useContext(Web3Context);
     if (context === undefined) {
         throw new Error('useWeb3 must be used within a Web3Provider');

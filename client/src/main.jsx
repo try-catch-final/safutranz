@@ -8,6 +8,7 @@ import { getDefaultConfig, RainbowKitProvider, darkTheme } from '@rainbow-me/rai
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { mainnet, sepolia } from 'wagmi/chains';
+import { Web3Provider } from './contexts/Web3Context';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -35,7 +36,9 @@ root.render(
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider theme={customTheme}>
-                    <App />
+                    <Web3Provider>
+                        <App />
+                    </Web3Provider>
                 </RainbowKitProvider>
             </QueryClientProvider>
         </WagmiProvider>

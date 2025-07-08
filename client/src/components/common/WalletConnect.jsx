@@ -12,13 +12,7 @@ import {
 import { BsCoin, BsMeta } from 'react-icons/bs';
 import { SiWalletconnect } from 'react-icons/si';
 
-interface WalletConnectProps {
-    connectWallet: (data: any) => void;
-    disconnectWallet: () => void;
-    walletAuth: any;
-}
-
-const WalletConnect: React.FC<WalletConnectProps> = ({
+const WalletConnect = ({
     connectWallet,
     disconnectWallet,
     walletAuth
@@ -73,13 +67,13 @@ const WalletConnect: React.FC<WalletConnectProps> = ({
         return <FaWallet className="text-gray-400" />;
     };
 
-    const formatAddress = (address: string) => {
+    const formatAddress = (address) => {
         if (!address) return '';
         return `${address.slice(0, 6)}...${address.slice(-4)}`;
     };
 
-    const getNetworkName = (chainId: string) => {
-        const networks: { [key: string]: string } = {
+    const getNetworkName = (chainId) => {
+        const networks = {
             '1': 'Ethereum',
             '56': 'BSC',
             '137': 'Polygon',
@@ -176,7 +170,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({
     );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state) => ({
     walletAuth: state.walletAuth
 });
 

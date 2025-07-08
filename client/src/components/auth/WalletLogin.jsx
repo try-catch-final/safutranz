@@ -14,16 +14,10 @@ import { SiWalletconnect } from 'react-icons/si';
 import { BsCoin } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
-interface WalletLoginProps {
-    userLogin: (data: any) => void;
-    auth: any;
-    errors: any;
-}
-
-const WalletLogin: React.FC<WalletLoginProps> = ({ userLogin, auth, errors }) => {
+const WalletLogin = ({ userLogin, auth, errors }) => {
     const navigate = useNavigate();
     const [isConnecting, setIsConnecting] = useState(false);
-    const [connectionStatus, setConnectionStatus] = useState<'idle' | 'connecting' | 'success' | 'error'>('idle');
+    const [connectionStatus, setConnectionStatus] = useState('idle');
     const [errorMessage, setErrorMessage] = useState('');
     const [walletAddress, setWalletAddress] = useState('');
     const [chainId, setChainId] = useState('');
@@ -73,7 +67,7 @@ const WalletLogin: React.FC<WalletLoginProps> = ({ userLogin, auth, errors }) =>
             setChainId(parseInt(chainId, 16).toString());
 
             // Listen for account changes
-            window.ethereum.on('accountsChanged', (accounts: string[]) => {
+            window.ethereum.on('accountsChanged', (accounts) => {
                 if (accounts.length === 0) {
                     setWalletAddress('');
                     setConnectionStatus('idle');
@@ -83,7 +77,7 @@ const WalletLogin: React.FC<WalletLoginProps> = ({ userLogin, auth, errors }) =>
             });
 
             // Listen for chain changes
-            window.ethereum.on('chainChanged', (chainId: string) => {
+            window.ethereum.on('chainChanged', (chainId) => {
                 setChainId(parseInt(chainId, 16).toString());
             });
 
@@ -98,7 +92,7 @@ const WalletLogin: React.FC<WalletLoginProps> = ({ userLogin, auth, errors }) =>
 
             userLogin(userData);
 
-        } catch (error: any) {
+        } catch (error) {
             setErrorMessage(error.message || 'Failed to connect MetaMask');
             setConnectionStatus('error');
         } finally {
@@ -117,7 +111,7 @@ const WalletLogin: React.FC<WalletLoginProps> = ({ userLogin, auth, errors }) =>
             // For now, we'll show a placeholder
             setErrorMessage('WalletConnect integration coming soon');
             setConnectionStatus('error');
-        } catch (error: any) {
+        } catch (error) {
             setErrorMessage(error.message || 'Failed to connect WalletConnect');
             setConnectionStatus('error');
         } finally {
@@ -160,7 +154,7 @@ const WalletLogin: React.FC<WalletLoginProps> = ({ userLogin, auth, errors }) =>
             } else {
                 throw new Error('Coinbase Wallet is not installed');
             }
-        } catch (error: any) {
+        } catch (error) {
             setErrorMessage(error.message || 'Failed to connect Coinbase Wallet');
             setConnectionStatus('error');
         } finally {
@@ -327,7 +321,7 @@ WalletLogin.propTypes = {
     errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state) => ({
     auth: state.auth,
     errors: state.errors
 });
