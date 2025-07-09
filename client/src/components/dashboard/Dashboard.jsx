@@ -186,7 +186,7 @@ class Dashboard extends Component {
 													Lock Your Tokens & Liquidity Easily With Safutrendzpad
 												</p>
 												<div className="has-text-centered" style={{ marginTop: '30px' }}>
-													<a href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/referral-earning">
+													<a href="https://safutranz.gitbook.io/safutranz-docs/referral-earning">
 														<Button className="db-button-color">
 															<strong>LOCK NOW</strong>
 														</Button>
@@ -279,7 +279,7 @@ class Dashboard extends Component {
 														Get your project broadcasted with Free email marketing
 													</p>
 													<div className="has-text-centered" style={{ marginTop: '30px' }}>
-														<a href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/hire-marketer">
+														<a href="https://safutranz.gitbook.io/safutranz-docs/hire-marketer">
 															<Button className="db-button-color">
 																<strong>SUBSCRIBE</strong>
 															</Button>

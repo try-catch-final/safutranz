@@ -33,9 +33,9 @@ var wid = '',
 	scrnState = { position: 'fixed' };
 
 function Sider({ screen, togglettt }) {
-	const [ menuCollapse, setMenuCollapse ] = useState(false);
-	const [ open, setOpen ] = React.useState(false);
-	const [ size, setSize ] = React.useState();
+	const [menuCollapse, setMenuCollapse] = useState(false);
+	const [open, setOpen] = React.useState(false);
+	const [size, setSize] = React.useState();
 
 	const handleOpen = (value) => {
 		setSize(value);
@@ -101,7 +101,7 @@ function Sider({ screen, togglettt }) {
 					</Link>
 				</MenuItem>
 				{Number(authAddress) === Number(window.localStorage.getItem('userAddress')) ||
-				Number(authAddress1) === Number(window.localStorage.getItem('userAddress')) ? (
+					Number(authAddress1) === Number(window.localStorage.getItem('userAddress')) ? (
 					<MenuItem icon={<FaCogs />}>
 						<Link to="/authSetting" style={{ color: '#ffaa00' }}>
 							Setting...
@@ -146,7 +146,7 @@ function Sider({ screen, togglettt }) {
 					<MenuItem onClick={() => handleOpen('xs')}>$STZ Staking </MenuItem>
 					<MenuItem onClick={() => handleOpen('xs')}>
 						<a
-							href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/contact-us"
+							href="https://safutranz.gitbook.io/safutranz-docs/safutranz-docs/contact-us"
 							style={{ color: '#ffaa00' }}
 						>
 							Request Staking
@@ -159,7 +159,7 @@ function Sider({ screen, togglettt }) {
 
 				<MenuItem icon={<FaStudiovinari />} size="xs">
 					<a
-						href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/referral-earning"
+						href="https://safutranz.gitbook.io/safutranz-docs/referral-earning"
 						style={{ color: '#ffaa00' }}
 					>
 						Referral Earning
@@ -172,7 +172,7 @@ function Sider({ screen, togglettt }) {
 				</MenuItem>
 				<MenuItem icon={<FaMoneyBillAlt />} size="xs">
 					<a
-						href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/premium-sales"
+						href="https://safutranz.gitbook.io/safutranz-docs/premium-sales"
 						style={{ color: '#ffaa00' }}
 					>
 						Premium Sales
@@ -183,13 +183,13 @@ function Sider({ screen, togglettt }) {
 				</MenuItem>
 				<MenuItem icon={<FaStroopwafel />} size="xs">
 					<a
-						href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/hire-developers"
+						href="https://safutranz.gitbook.io/safutranz-docs/hire-developers"
 						style={{ color: '#ffaa00' }}
 					/>Hire Dev
 				</MenuItem>
 				<MenuItem icon={<FaMastodon />} size="xs">
 					<a
-						href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/hire-marketer"
+						href="https://safutranz.gitbook.io/safutranz-docs/hire-marketer"
 						style={{ color: '#ffaa00' }}
 					>
 						Hire Marketer
@@ -197,7 +197,7 @@ function Sider({ screen, togglettt }) {
 				</MenuItem>
 				<MenuItem icon={<FaDonate />} size="xs">
 					<a
-						href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/"
+						href="https://safutranz.gitbook.io/safutranz-docs"
 						style={{ color: '#ffaa00' }}
 					>
 						Docs
@@ -210,7 +210,7 @@ function Sider({ screen, togglettt }) {
 				</MenuItem>
 				<MenuItem icon={<FaDAndD />} size="xs" onClick={() => handleOpen('xs')}>
 					<a
-						href="https://safutrendz-socialize-and-earn.gitbook.io/safutrendzpad-documentation/safutrendzpad-docs/custom-dapp"
+						href="https://safutranz.gitbook.io/safutranz-docs/custom-dapp"
 						style={{ color: '#ffaa00' }}
 					>
 						Custom Dapp
