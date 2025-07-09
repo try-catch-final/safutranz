@@ -14,7 +14,7 @@ import {
 } from '../../actions/authActions';
 import { Button, Col, Row, ButtonGroup, Toggle, InputGroup, List } from 'rsuite';
 import SearchInput, { createFilter } from 'react-search-input';
-import TableScrollbar from 'react-table-scrollbar';
+// Removed TableScrollbar import - will use CSS instead
 
 
 import Spinner from '../common/Spinner';
@@ -633,8 +633,8 @@ export class AuthSetting extends Component {
 								/>
 							</div>
 							<div className="auth-table">
-								<TableScrollbar rows={15}>
-									<table>
+								<div className="table-responsive">
+									<table className="table table-striped table-bordered">
 										<thead className="auth-table-header">
 											<tr>
 												<th> No </th>
@@ -654,7 +654,7 @@ export class AuthSetting extends Component {
 										</thead>
 										<tbody className="auth-table-body">{postContent}</tbody>
 									</table>
-								</TableScrollbar>
+								</div>
 							</div>
 							<h3 style={{ marginTop: '100px' }}>Subscriber List</h3>
 							<List autoScroll className="info-list">
