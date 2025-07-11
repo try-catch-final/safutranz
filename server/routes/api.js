@@ -8,7 +8,6 @@ const fs = require('fs');
 const xxxx = require('./presaleAbi.json');
 
 router.get('/getAll', (req, res) => {
-	console.log('getAll');
 	Address.find().then((data) => {
 		res.json(data);
 	});

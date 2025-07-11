@@ -99,7 +99,6 @@ function Sider({ screen, togglettt }) {
 					icon={<FaHome />} 
 					component="div"
 					onClick={() => navigate('/')}
-					style={{ color: '#ffaa00' }}
 				>
 					Home
 				</MenuItem>
@@ -109,7 +108,6 @@ function Sider({ screen, togglettt }) {
 						icon={<FaCogs />} 
 						component="div"
 						onClick={() => navigate('/authSetting')}
-						style={{ color: '#ffaa00' }}
 					>
 						Setting...
 					</MenuItem>
@@ -117,18 +115,16 @@ function Sider({ screen, togglettt }) {
 					''
 				)}
 
-				<SubMenu title="SaFuTranzPads " icon={<FaCentos />}>
+				<SubMenu label="SaFuTranzPads" icon={<FaCentos />}>
 					<MenuItem 
 						component="div"
 						onClick={() => navigate('/CreateToken')}
-						style={{ color: '#ffaa00' }}
 					>
 						Create Token
 					</MenuItem>
 					<MenuItem 
 						component="div"
 						onClick={() => navigate('/LaunchPad1')}
-						style={{ color: '#ffaa00' }}
 					>
 						Create LaunchPad
 					</MenuItem>
@@ -136,7 +132,6 @@ function Sider({ screen, togglettt }) {
 					<MenuItem 
 						component="div"
 						onClick={() => navigate('/FairLaunch1')}
-						style={{ color: '#ffaa00' }}
 					>
 						Create Fair Launch
 					</MenuItem>
@@ -147,7 +142,6 @@ function Sider({ screen, togglettt }) {
 					<MenuItem 
 						component="div"
 						onClick={() => navigate('/PadList')}
-						style={{ color: '#ffaa00' }}
 					>
 						Launchpad List
 					</MenuItem>
@@ -156,17 +150,16 @@ function Sider({ screen, togglettt }) {
 						alarm
 					</MenuItem>
 				</SubMenu>
-				<SubMenu title="Staking " icon={<FaStrikethrough />}>
-					<MenuItem onClick={() => handleOpen('xs')}>$STZ Staking </MenuItem>
+				<SubMenu label="Staking" icon={<FaStrikethrough />}>
+					<MenuItem onClick={() => handleOpen('xs')}>$STZ Staking</MenuItem>
 					<MenuItem 
 						component="div"
-						onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/safutranz-docs/contact-us', '_blank')}
-						style={{ color: '#ffaa00' }}
+						onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/contact-us', '_blank')}
 					>
 						Request Staking
 					</MenuItem>
 				</SubMenu>
-				<MenuItem icon={<FaLock />} size="xs" onClick={() => handleOpen('xs')}>
+				<MenuItem icon={<FaLock />} size="xs" onClick={() => handleOpen('xs')} 	style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}>
 					Locks
 				</MenuItem>
 
@@ -175,7 +168,7 @@ function Sider({ screen, togglettt }) {
 					size="xs"
 					component="div"
 					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/referral-earning', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					Referral Earning
 				</MenuItem>
@@ -183,7 +176,7 @@ function Sider({ screen, togglettt }) {
 					icon={<FaAirbnb />}
 					component="div"
 					onClick={() => window.open('https://multisender.safutranz.com', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					AirDrop
 				</MenuItem>
@@ -192,11 +185,11 @@ function Sider({ screen, togglettt }) {
 					size="xs"
 					component="div"
 					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/premium-sales', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					Premium Sales
 				</MenuItem>
-				<MenuItem icon={<FaSchlix />} size="xs" onClick={() => handleOpen('xs')}>
+				<MenuItem icon={<FaSchlix />} size="xs" onClick={() => handleOpen('xs')} 	style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}>
 					Multi-Sig
 				</MenuItem>
 				<MenuItem 
@@ -204,7 +197,7 @@ function Sider({ screen, togglettt }) {
 					size="xs"
 					component="div"
 					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/hire-developers', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					Hire Dev
 				</MenuItem>
@@ -213,7 +206,7 @@ function Sider({ screen, togglettt }) {
 					size="xs"
 					component="div"
 					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/hire-marketer', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					Hire Marketer
 				</MenuItem>
@@ -222,7 +215,7 @@ function Sider({ screen, togglettt }) {
 					size="xs"
 					component="div"
 					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					Docs
 				</MenuItem>
@@ -230,7 +223,7 @@ function Sider({ screen, togglettt }) {
 					icon={<FaLink />}
 					component="div"
 					onClick={() => window.open('https://linktree.com/safu_trendz', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					Social Links
 				</MenuItem>
@@ -239,17 +232,17 @@ function Sider({ screen, togglettt }) {
 					size="xs"
 					component="div"
 					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/custom-dapp', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					Custom Dapp
 				</MenuItem>
-				<MenuItem icon={<FaAudible />} size="xs" onClick={() => handleOpen('xs')}>
+				<MenuItem icon={<FaAudible />} size="xs" onClick={() => handleOpen('xs')}	style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}>
 					Dev Support
 				</MenuItem>
-				<MenuItem icon={<FaDiceD20 />} size="xs" onClick={() => handleOpen('xs')}>
+				<MenuItem icon={<FaDiceD20 />} size="xs" onClick={() => handleOpen('xs')}	style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}>
 					Online Help
 				</MenuItem>
-				<MenuItem icon={<FaDna />} size="xs" onClick={() => handleOpen('xs')}>
+				<MenuItem icon={<FaDna />} size="xs" onClick={() => handleOpen('xs')}	style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}>
 					Advertisement
 				</MenuItem>
 				<MenuItem
@@ -258,7 +251,7 @@ function Sider({ screen, togglettt }) {
 					}
 					component="div"
 					onClick={() => window.open('https://safutranz.com/', '_blank')}
-					style={{ color: '#ffaa00' }}
+					style={{ color: '#ffaa00', backgroundColor: '#1f2126', '&:hover': { backgroundColor: '#ffaa00', color: '#1f2126' } }}
 				>
 					SafuTranz
 				</MenuItem>
