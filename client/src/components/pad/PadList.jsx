@@ -56,11 +56,25 @@ class PadList extends Component {
 		this.props.getPads();
 		this.props.getAlaramData({ userAddress: localStorage.getItem('userAddress') });
 
-		// Set up interval for periodic updates (every 30 seconds instead of 1 second)
+		// Set up interval for periodic updates (every 2 minutes instead of 30 seconds)
+		// This reduces server load and prevents unnecessary reloads
 		this.intervalId = setInterval(() => {
-			this.props.getPads();
-			this.props.getAlaramData({ userAddress: localStorage.getItem('userAddress') });
-		}, 30000); // 30 seconds instead of 1 second
+			// Only update if the component is still mounted and visible
+			if (document.visibilityState === 'visible') {
+				this.props.getPads();
+				this.props.getAlaramData({ userAddress: localStorage.getItem('userAddress') });
+			}
+		}, 120000); // 2 minutes instead of 30 seconds
+
+		// Add visibility change listener to pause polling when tab is not visible
+		this.handleVisibilityChange = () => {
+			if (document.visibilityState === 'visible') {
+				// Refresh data when tab becomes visible again
+				this.props.getPads();
+				this.props.getAlaramData({ userAddress: localStorage.getItem('userAddress') });
+			}
+		};
+		document.addEventListener('visibilitychange', this.handleVisibilityChange);
 
 		// Mark initial load as complete after a short delay
 		setTimeout(() => {
@@ -71,6 +85,9 @@ class PadList extends Component {
 	componentWillUnmount() {
 		if (this.intervalId) {
 			clearInterval(this.intervalId);
+		}
+		if (this.handleVisibilityChange) {
+			document.removeEventListener('visibilitychange', this.handleVisibilityChange);
 		}
 	}
 

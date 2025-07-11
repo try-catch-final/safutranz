@@ -216,11 +216,8 @@ class PadInfo extends Component {
 				});
 			})
 			.catch((err) => console.log(err));
-		setInterval(() => {
-			this.setState((prevState) => {
-				return {};
-			});
-		}, 1000);
+		// Remove the unnecessary 1-second interval that was causing reloads
+		// The component will update naturally when props or state change
 	}
 
 	onModalState() {

@@ -64,14 +64,40 @@ function App() {
 	const [chainId, setChainId] = useState();
 
 	useEffect(() => {
-		const interval = setInterval(() => {
+		// Check Ethereum connection on mount
+		if (window.ethereum) {
+			window.localStorage.setItem('chainId', parseInt(window.ethereum.chainId, 16));
+			window.localStorage.setItem('userAddress', window.ethereum.selectedAddress);
+			setChainId(window.localStorage.getItem('chainId'));
+		}
+
+		// Listen for Ethereum events instead of polling
+		const handleAccountsChanged = (accounts) => {
 			if (window.ethereum) {
 				window.localStorage.setItem('chainId', parseInt(window.ethereum.chainId, 16));
-				window.localStorage.setItem('userAddress', window.ethereum.selectedAddress);
+				window.localStorage.setItem('userAddress', accounts[0] || '');
 				setChainId(window.localStorage.getItem('chainId'));
 			}
-		}, 1000);
-		return () => clearInterval(interval);
+		};
+
+		const handleChainChanged = () => {
+			if (window.ethereum) {
+				window.localStorage.setItem('chainId', parseInt(window.ethereum.chainId, 16));
+				setChainId(window.localStorage.getItem('chainId'));
+			}
+		};
+
+		if (window.ethereum) {
+			window.ethereum.on('accountsChanged', handleAccountsChanged);
+			window.ethereum.on('chainChanged', handleChainChanged);
+		}
+
+		return () => {
+			if (window.ethereum) {
+				window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+				window.ethereum.removeListener('chainChanged', handleChainChanged);
+			}
+		};
 	}, []);
 	return (
 		<Provider store={store}>

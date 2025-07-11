@@ -45,7 +45,12 @@ export default defineConfig({
                 changeOrigin: true,
                 secure: false
             }
-        }
+        },
+        // Disable HMR in production to prevent reload issues
+        hmr: process.env.NODE_ENV === 'development' ? {
+            port: 4000,
+            host: '0.0.0.0'
+        } : false
     },
     build: {
         outDir: 'build',
