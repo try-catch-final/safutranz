@@ -54,7 +54,7 @@ module.exports = ( tokenOrPresale )=>{
         };
         const tempFile = JSON.parse(solc.compile(JSON.stringify(input)));
 
-        const contractFile = tempFile.contracts['Presale.sol']['SafuTrendzPresale'];
+        const contractFile = tempFile.contracts['Presale.sol']['SafuTranzPresale'];
 
         return contractFile;
     }

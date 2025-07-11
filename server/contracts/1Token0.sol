@@ -12,7 +12,7 @@
 // Telegram Group: https://t.me/safu_trendz
 // Telegram Channel: https://t.me/safu_trendzans
 // Twitter: https://twitter.com/safu_trendz
-// website: www.safutrendz.com
+// website: www.safutranz.com
 
 pragma solidity ^0.8.4;
 
@@ -394,7 +394,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 
-contract SaFuTrendz is Context, IERC20, Ownable {
+contract SaFuTranz is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
     

@@ -14,7 +14,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 const config = getDefaultConfig({
-    appName: 'SaFuTrendz ',
+    appName: 'SaFuTranz ',
     projectId: 'f8623720696031a4910a690a781428f6',
     chains: [mainnet, sepolia],
     ssr: false,

@@ -1194,7 +1194,7 @@ library TransferHelper {
 }
 
 
-contract SafuTrendzPresale is ReentrancyGuard, Ownable {
+contract SafuTranzPresale is ReentrancyGuard, Ownable {
     using Address for address;
     using SafeMath for uint256;
     using SafeERC20 for IERC20;

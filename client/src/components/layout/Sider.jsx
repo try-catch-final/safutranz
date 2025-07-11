@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ProSidebar, Menu, MenuItem, SubMenu, SidebarFooter } from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { ChevronLeft, ChevronRight } from 'react-feather';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
 	FaHome,
 	FaCentos,
@@ -33,6 +32,7 @@ var wid = '',
 	scrnState = { position: 'fixed' };
 
 function Sider({ screen, togglettt }) {
+	const navigate = useNavigate();
 	const [menuCollapse, setMenuCollapse] = useState(false);
 	const [open, setOpen] = React.useState(false);
 	const [size, setSize] = React.useState();
@@ -76,7 +76,7 @@ function Sider({ screen, togglettt }) {
 	}
 
 	return (
-		<ProSidebar
+		<Sidebar
 			collapsed={menuCollapse}
 			style={scrnState}
 			width={wid}
@@ -95,47 +95,61 @@ function Sider({ screen, togglettt }) {
 				</Modal.Footer>
 			</Modal>
 			<Menu iconShape="circle">
-				<MenuItem icon={<FaHome />}>
-					<Link to="/" style={{ color: '#ffaa00' }}>
-						Home
-					</Link>
+				<MenuItem 
+					icon={<FaHome />} 
+					component="div"
+					onClick={() => navigate('/')}
+					style={{ color: '#ffaa00' }}
+				>
+					Home
 				</MenuItem>
 				{Number(authAddress) === Number(window.localStorage.getItem('userAddress')) ||
 					Number(authAddress1) === Number(window.localStorage.getItem('userAddress')) ? (
-					<MenuItem icon={<FaCogs />}>
-						<Link to="/authSetting" style={{ color: '#ffaa00' }}>
-							Setting...
-						</Link>
+					<MenuItem 
+						icon={<FaCogs />} 
+						component="div"
+						onClick={() => navigate('/authSetting')}
+						style={{ color: '#ffaa00' }}
+					>
+						Setting...
 					</MenuItem>
 				) : (
 					''
 				)}
 
-				<SubMenu title="SaFuTrendzPads " icon={<FaCentos />}>
-					<MenuItem>
-						<Link to="/CreateToken" style={{ color: '#ffaa00' }}>
-							Create Token
-						</Link>
+				<SubMenu title="SaFuTranzPads " icon={<FaCentos />}>
+					<MenuItem 
+						component="div"
+						onClick={() => navigate('/CreateToken')}
+						style={{ color: '#ffaa00' }}
+					>
+						Create Token
 					</MenuItem>
-					<MenuItem>
-						<Link to="/LaunchPad1" style={{ color: '#ffaa00' }}>
-							Create LaunchPad
-						</Link>
+					<MenuItem 
+						component="div"
+						onClick={() => navigate('/LaunchPad1')}
+						style={{ color: '#ffaa00' }}
+					>
+						Create LaunchPad
 					</MenuItem>
 
-					<MenuItem>
-						<Link to="/FairLaunch1" style={{ color: '#ffaa00' }}>
-							Create Fair Launch
-						</Link>
+					<MenuItem 
+						component="div"
+						onClick={() => navigate('/FairLaunch1')}
+						style={{ color: '#ffaa00' }}
+					>
+						Create Fair Launch
 					</MenuItem>
 					<MenuItem size="xs" onClick={() => handleOpen('xs')}>
 						Private Sale
 					</MenuItem>
 
-					<MenuItem>
-						<Link to="/PadList" style={{ color: '#ffaa00' }}>
-							Launchpad List
-						</Link>
+					<MenuItem 
+						component="div"
+						onClick={() => navigate('/PadList')}
+						style={{ color: '#ffaa00' }}
+					>
+						Launchpad List
 					</MenuItem>
 
 					<MenuItem size="xs" onClick={() => handleOpen('xs')}>
@@ -144,77 +158,90 @@ function Sider({ screen, togglettt }) {
 				</SubMenu>
 				<SubMenu title="Staking " icon={<FaStrikethrough />}>
 					<MenuItem onClick={() => handleOpen('xs')}>$STZ Staking </MenuItem>
-					<MenuItem onClick={() => handleOpen('xs')}>
-						<a
-							href="https://safutranz.gitbook.io/safutranz-docs/safutranz-docs/contact-us"
-							style={{ color: '#ffaa00' }}
-						>
-							Request Staking
-						</a>
+					<MenuItem 
+						component="div"
+						onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/safutranz-docs/contact-us', '_blank')}
+						style={{ color: '#ffaa00' }}
+					>
+						Request Staking
 					</MenuItem>
 				</SubMenu>
 				<MenuItem icon={<FaLock />} size="xs" onClick={() => handleOpen('xs')}>
 					Locks
 				</MenuItem>
 
-				<MenuItem icon={<FaStudiovinari />} size="xs">
-					<a
-						href="https://safutranz.gitbook.io/safutranz-docs/referral-earning"
-						style={{ color: '#ffaa00' }}
-					>
-						Referral Earning
-					</a>
+				<MenuItem 
+					icon={<FaStudiovinari />} 
+					size="xs"
+					component="div"
+					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/referral-earning', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					Referral Earning
 				</MenuItem>
-				<MenuItem icon={<FaAirbnb />}>
-					<a href="https://multisender.safutrendz.com" style={{ color: '#ffaa00' }}>
-						AirDrop
-					</a>
+				<MenuItem 
+					icon={<FaAirbnb />}
+					component="div"
+					onClick={() => window.open('https://multisender.safutranz.com', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					AirDrop
 				</MenuItem>
-				<MenuItem icon={<FaMoneyBillAlt />} size="xs">
-					<a
-						href="https://safutranz.gitbook.io/safutranz-docs/premium-sales"
-						style={{ color: '#ffaa00' }}
-					>
-						Premium Sales
-					</a>
+				<MenuItem 
+					icon={<FaMoneyBillAlt />} 
+					size="xs"
+					component="div"
+					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/premium-sales', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					Premium Sales
 				</MenuItem>
 				<MenuItem icon={<FaSchlix />} size="xs" onClick={() => handleOpen('xs')}>
 					Multi-Sig
 				</MenuItem>
-				<MenuItem icon={<FaStroopwafel />} size="xs">
-					<a
-						href="https://safutranz.gitbook.io/safutranz-docs/hire-developers"
-						style={{ color: '#ffaa00' }}
-					/>Hire Dev
+				<MenuItem 
+					icon={<FaStroopwafel />} 
+					size="xs"
+					component="div"
+					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/hire-developers', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					Hire Dev
 				</MenuItem>
-				<MenuItem icon={<FaMastodon />} size="xs">
-					<a
-						href="https://safutranz.gitbook.io/safutranz-docs/hire-marketer"
-						style={{ color: '#ffaa00' }}
-					>
-						Hire Marketer
-					</a>
+				<MenuItem 
+					icon={<FaMastodon />} 
+					size="xs"
+					component="div"
+					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/hire-marketer', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					Hire Marketer
 				</MenuItem>
-				<MenuItem icon={<FaDonate />} size="xs">
-					<a
-						href="https://safutranz.gitbook.io/safutranz-docs"
-						style={{ color: '#ffaa00' }}
-					>
-						Docs
-					</a>
+				<MenuItem 
+					icon={<FaDonate />} 
+					size="xs"
+					component="div"
+					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					Docs
 				</MenuItem>
-				<MenuItem icon={<FaLink />}>
-					<a href="https://linktree.com/safu_trendz" style={{ color: '#ffaa00' }}>
-						Social Links
-					</a>
+				<MenuItem 
+					icon={<FaLink />}
+					component="div"
+					onClick={() => window.open('https://linktree.com/safu_trendz', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					Social Links
 				</MenuItem>
-				<MenuItem icon={<FaDAndD />} size="xs" onClick={() => handleOpen('xs')}>
-					<a
-						href="https://safutranz.gitbook.io/safutranz-docs/custom-dapp"
-						style={{ color: '#ffaa00' }}
-					>
-						Custom Dapp
-					</a>
+				<MenuItem 
+					icon={<FaDAndD />} 
+					size="xs"
+					component="div"
+					onClick={() => window.open('https://safutranz.gitbook.io/safutranz-docs/custom-dapp', '_blank')}
+					style={{ color: '#ffaa00' }}
+				>
+					Custom Dapp
 				</MenuItem>
 				<MenuItem icon={<FaAudible />} size="xs" onClick={() => handleOpen('xs')}>
 					Dev Support
@@ -227,12 +254,13 @@ function Sider({ screen, togglettt }) {
 				</MenuItem>
 				<MenuItem
 					icon={
-						<a href="https://safutrendz.com/" style={{ color: '#ffaa00' }}>
-							<img src={Logo} className="photo" alt="logo" style={{ width: '35px', height: '35px' }} />
-						</a>
+						<img src={Logo} className="photo" alt="logo" style={{ width: '35px', height: '35px' }} />
 					}
+					component="div"
+					onClick={() => window.open('https://safutranz.com/', '_blank')}
+					style={{ color: '#ffaa00' }}
 				>
-					SafuTrendz
+					SafuTranz
 				</MenuItem>
 				<MenuItem onClick={menuIconClick}>
 					{!menuCollapse ? (
@@ -244,8 +272,7 @@ function Sider({ screen, togglettt }) {
 				<br />
 				<hr />
 			</Menu>
-			<SidebarFooter />
-		</ProSidebar>
+		</Sidebar>
 	);
 }
 

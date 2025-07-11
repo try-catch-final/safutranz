@@ -18,7 +18,7 @@ function Header2() {
 	});
 
 	const setTrendingMarqueeData = () => {
-		if (padList.length !== 0) {
+		if (padList && padList.length !== 0) {
 			const buf1 = [...padList];
 
 			let result = buf1.sort((a, b) => b.saleCount - a.saleCount);

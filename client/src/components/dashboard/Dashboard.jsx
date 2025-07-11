@@ -85,10 +85,10 @@ class Dashboard extends Component {
 										</div>
 									</Col>
 									<Col xs={24} md={12}>
-										<div className="text-center title-safu-sub">SaFuTrendzPad</div>
+										<div className="text-center title-safu-sub">SaFuTranzPad</div>
 										<h2 className="dash-title text-white">The Evolution of SaFu Projects</h2>
 										<p className=" text-center" style={{ marginTop: '50px' }}>
-											SaFuTrendzPad gives you the best secure, fast, and reliable launchpad for
+											SaFuTranzPad gives you the best secure, fast, and reliable launchpad for
 											your projects which all token needs to pass through a verification service
 											before getting listed on our platform. We do this to create trust and secure
 											trading for our investors, everyone can trade with no risk.
@@ -124,12 +124,12 @@ class Dashboard extends Component {
 						<img src={waveImage} height="96px" width={'100%'} style={{ marginBottom: '100px' }} />
 						<div className="container">
 							<div className="ant-card-body">
-								<p className="lead text-center">
+								<div className="lead text-center">
 									<div
 										className="dash-title text-center socials"
 										style={{ fontSize: '30px', marginBottom: '20px', color: '#ffaa00' }}
 									>
-										SAFUTRENDZPAD ECOSYSTEM
+										SAFUTRANZPAD ECOSYSTEM
 									</div>
 									<p style={{ fontSize: '20px' }}>
 										Suitable Tools To Get Started With Our Launchpad, With Efficiency And Support
@@ -147,7 +147,7 @@ class Dashboard extends Component {
 										Support 24/7 | Staking Platform | Refer & Earn | KYC + Audit | Multi-Sig Wallet
 										| Alarm (Notification)
 									</p>
-								</p>
+								</div>
 							</div>
 							<div style={{ marginTop: '70px' }}>
 								<Row>
@@ -183,7 +183,7 @@ class Dashboard extends Component {
 												<br />
 												<br />
 												<p className="text-center" style={{ fontSize: '15px' }}>
-													Lock Your Tokens & Liquidity Easily With Safutrendzpad
+													Lock Your Tokens & Liquidity Easily With SafuTranzPad
 												</p>
 												<div className="has-text-centered" style={{ marginTop: '30px' }}>
 													<a href="https://safutranz.gitbook.io/safutranz-docs/referral-earning">
@@ -225,7 +225,7 @@ class Dashboard extends Component {
 													Create Airdrop easily which supports BSC
 												</p>
 												<div className="has-text-centered" style={{ marginTop: '30px' }}>
-													<a href="https://multisender.safutrendz.com">
+													<a href="https://multisender.safutranz.com">
 														<Button className="db-button-color">
 															<strong>SEND NOW</strong>
 														</Button>

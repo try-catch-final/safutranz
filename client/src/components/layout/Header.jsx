@@ -118,15 +118,15 @@ function Header(chainId) {
 					<MobileNavbar.Items>
 						{isAuthenticated === true && (
 							<Dropdown title={'create'} id="nav-drop-mobile" noCaret>
-								<Link to="/LaunchPad1">
-									<Dropdown.Item>Create Launch</Dropdown.Item>
-								</Link>
-								<Link to="/FairLaunch1">
-									<Dropdown.Item>Create FairLaunch</Dropdown.Item>
-								</Link>
-								<Link to="/CreateToken">
-									<Dropdown.Item>Create Token</Dropdown.Item>
-								</Link>
+								<Dropdown.Item as={Link} to="/LaunchPad1">
+									Create Launch
+								</Dropdown.Item>
+								<Dropdown.Item as={Link} to="/FairLaunch1">
+									Create FairLaunch
+								</Dropdown.Item>
+								<Dropdown.Item as={Link} to="/CreateToken">
+									Create Token
+								</Dropdown.Item>
 							</Dropdown>
 						)}
 						<StyledConnectButton />
@@ -157,15 +157,15 @@ function Header(chainId) {
 								style={{ padding: '0px', marginTop: '23px', borderRadius: '12px' }}
 								id="nav-drop"
 							>
-								<Link to="/LaunchPad1">
-									<Dropdown.Item>Create Launch</Dropdown.Item>
-								</Link>
-								<Link to="/FairLaunch1">
-									<Dropdown.Item>Create FairLaunch</Dropdown.Item>
-								</Link>
-								<Link to="/CreateToken">
-									<Dropdown.Item>Create Token</Dropdown.Item>
-								</Link>
+								<Dropdown.Item as={Link} to="/LaunchPad1">
+									Create Launch
+								</Dropdown.Item>
+								<Dropdown.Item as={Link} to="/FairLaunch1">
+									Create FairLaunch
+								</Dropdown.Item>
+								<Dropdown.Item as={Link} to="/CreateToken">
+									Create Token
+								</Dropdown.Item>
 							</Dropdown>
 						) : null}
 						<StyledConnectButton />
