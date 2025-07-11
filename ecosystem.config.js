@@ -61,11 +61,13 @@ module.exports = {
             // Environment variables
             env: {
                 NODE_ENV: 'development',
-                PORT: 4000
+                PORT: 4000,
+                HOST: '0.0.0.0'
             },
             env_production: {
                 NODE_ENV: 'production',
-                PORT: 4000
+                PORT: 4000,
+                HOST: '0.0.0.0'
             },
 
             // Logging
@@ -95,7 +97,7 @@ module.exports = {
             // Kill timeout
             kill_timeout: 5000,
 
-            // Interpreter for npm
+            // Use npm as interpreter
             interpreter: 'none'
         }
     ],
