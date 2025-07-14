@@ -13,10 +13,3 @@ node_modules/
 client/node_modules/
 
 # dotenv environment variables file
-
-
-# client files
- 
- 
-client/.env
- 
