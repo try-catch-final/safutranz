@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import vitePostcssTools from 'vite-postcss-tools';
+import vitePostcssHelper from 'vite-postcss-helper';
 
 export default defineConfig({
-    plugins: [react(), vitePostcssTools()],
+    plugins: [react(), vitePostcssHelper()],
     css: {
         preprocessorOptions: {
             less: {
